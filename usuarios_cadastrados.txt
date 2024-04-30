@@ -1,4 +1,3 @@
-User{ Nickname='teas', Document=0, E-mail=tgh\@gmail.com, Password='t4312'}
 User{ Nickname='THI', Document=0, E-mail=T@GMAIL.COM, Password='THIU345'}
 User{ Nickname='wesley1', Document=0, E-mail=wes@gmail.com, Password='wes345'}
 User{ Nickname='caio1', Document=0, E-mail=caio@gmail.com, Password='caio345'}

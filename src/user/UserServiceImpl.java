@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.TreeMap;
 
-public class UserServiceImpl implements UserService {
+public class UserServiceImpl implements UserService  {
 
     private List<User> userList;
 
@@ -27,7 +27,6 @@ public class UserServiceImpl implements UserService {
             user.setPassword(password);
             user.setEmail(email);
             gerarBanco(user, "gerando_banco_dados");
-            userList.add(user);
             return user;
         }
         return new User();
@@ -48,6 +47,15 @@ public class UserServiceImpl implements UserService {
 
     }
 
+    @Override
+    public List<User> bulkCreate(List<User> users) throws IOException {
+        for (User user : users)  {
+            userList.add(user);
+            gerarBanco(user, "usuarios_cadastrados");
+        }
+        return userList;
+    }
+
     public boolean delete(User user) {
         if (null != user) {
             user = new User();
@@ -56,9 +64,9 @@ public class UserServiceImpl implements UserService {
         return false;
     }
 
-    private void gerarBanco(User user, String nomeBanco) throws IOException {
-        BufferedWriter writer = new BufferedWriter(new FileWriter(nomeBanco + ".txt"));
-        writer.write(user.toString());
+    private void gerarBanco(User users, String nomeBanco) throws IOException {
+        BufferedWriter writer = new BufferedWriter(new FileWriter(nomeBanco + ".txt", true));
+        writer.write(users.toString() + "\n");
         writer.close();
     }
 

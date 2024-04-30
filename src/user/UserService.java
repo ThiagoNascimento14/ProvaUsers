@@ -2,6 +2,7 @@ package user;
 
 import model.User;
 
+import javax.jws.soap.SOAPBinding;
 import java.io.IOException;
 import java.util.List;
 
@@ -11,5 +12,6 @@ public interface UserService {
     void read (User user);
     User update(User user, String updatedNickName, String updatedEmail, String updatedPassword) throws IOException;
 
-    List<User> bulkCreate(List<String> nickNames, List<Long> documents, List<String> emails, List<String> passwords) throws IOException;
+    List<User> bulkCreate(List<User> users) throws IOException;
+
 }
